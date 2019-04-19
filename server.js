@@ -23,6 +23,7 @@ if (isDev) {
 }
 
 app.use('/api/posts', require('./routes/posts'));
+app.use(require('./lib/errorHandlers').sendErrorMessage);
 
 if (!isDev) {
   app.get('*', (req, res) => {
