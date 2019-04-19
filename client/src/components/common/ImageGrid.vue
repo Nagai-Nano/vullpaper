@@ -1,16 +1,16 @@
 <template>
   <v-container grid-list-md fluid pt-3>
     <v-layout row wrap>
-      <v-flex v-for="post in posts" :key="post.id" xs4 md2 d-flex>
+      <v-flex v-for="image in images" :key="image.id" xs4 md2 d-flex>
         <Imagex
-          :src="post.preview"
+          :src="image.preview"
           aspect-ratio=".7"
           position="top center"
           class="p-relative bordered rounded"
         >
           <router-link
-            to="/"
-            class="p-absolute fill-height fill-width overlay t-0 l-0"
+            :to="`/image/${image.id}`"
+            class="p-absolute fill-height fill-width overlay t-0 l-0 hover-overlay"
           />
           <div class="p-absolute r-0 b-0">
             <a @click.prevent class="d-inline-block mr-2 pr-1 mb-1 white--text">
@@ -31,7 +31,7 @@ import Imagex from './Imagex';
 
 export default {
   props: {
-    posts: {
+    images: {
       type: Array,
       required: true
     }
@@ -45,9 +45,14 @@ export default {
 <style scoped>
 .overlay {
   background-color: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.5s;
 }
 
 .bordered {
   border: 1px solid #bdbdbd;
+}
+
+.hover-overlay:hover {
+  background: rgba(0, 0, 0, 0.4);
 }
 </style>

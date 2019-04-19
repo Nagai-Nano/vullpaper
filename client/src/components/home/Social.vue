@@ -18,7 +18,7 @@
             :key="s.link"
             class="rounded white mx-2 pa-5 cursor-pointer hover-color"
           >
-            <i style="font-size: 5rem" :class="s.icon" />
+            <i style="font-size: 5rem; transition: all .3s" :class="s.icon" />
             <v-btn
               tag="a"
               :href="s.link"

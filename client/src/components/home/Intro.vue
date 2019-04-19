@@ -14,6 +14,7 @@
           class="bg-primary white--text letter-spacing"
           flat
           style="margin-left: auto"
+          @click="scrollToImages"
         >
           Xem ngay
         </v-btn>
@@ -22,7 +23,7 @@
           outline
           color="white"
           class="ml-1 letter-spacing"
-          href="http://google.com"
+          href="https://github.com/nagai-Nano/vullpaper"
           target="_blank"
         >
           Source code
@@ -41,6 +42,12 @@ export default {
   components: {
     Hero,
     Title
+  },
+  methods: {
+    scrollToImages() {
+      const imagesView = document.querySelector('#images');
+      imagesView.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 };
 </script>
