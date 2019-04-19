@@ -1,0 +1,45 @@
+li {
+  list-style: none;
+}
+
+.bg-primary {
+  background: #41b883 !important;
+}
+
+.letter-spacing {
+  letter-spacing: 0.025rem !important;
+}
+
+.decoration-none {
+  text-decoration: none;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.fill-width {
+  width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.v-input__slot {
+  border: 1px solid #bdbdbd;
+  margin-bottom: 0px !important;
+  border-radius: 4px !important;
+}
+
+.container.d-flex.pt-2 .v-btn__content {
+  height: 100% !important;
+}
