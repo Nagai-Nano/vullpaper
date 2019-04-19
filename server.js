@@ -22,7 +22,7 @@ if (isDev) {
   app.use(require('cors')());
 }
 
-app.get('/', (req, res) => res.send('hi'));
+app.use('/api/posts', require('./routes/posts'));
 
 if (!isDev) {
   app.get('*', (req, res) => {
