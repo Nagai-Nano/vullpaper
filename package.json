@@ -1,0 +1,14 @@
+{
+  "name": "vullpaper",
+  "version": "1.0.0",
+  "description": "Single page app that allows you to view and download anime images",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Nanu <sdjkrskldada@gmail.com> (https://www.facebook.com/Nanoooooooooooooooooooooooooooooooooooooooooooooox)",
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^1.17.0"
+  }
+}
