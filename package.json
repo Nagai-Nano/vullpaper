@@ -9,6 +9,15 @@
   "author": "Nanu <sdjkrskldada@gmail.com> (https://www.facebook.com/Nanoooooooooooooooooooooooooooooooooooooooooooooox)",
   "license": "MIT",
   "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^7.0.0",
+    "morgan": "^1.9.1",
     "prettier": "^1.17.0"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "request": "^2.88.0"
   }
 }
