@@ -5,6 +5,8 @@
         <v-progress-circular indeterminate color="primary" />
       </v-layout>
     </template>
+
+    <slot />
   </v-img>
 </template>
 

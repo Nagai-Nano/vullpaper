@@ -27,27 +27,11 @@
           </ul>
         </v-flex>
 
-        <v-container grid-list-md fluid pt-3>
-          <v-layout row wrap>
-            <v-flex v-for="n in 9" :key="n" xs4 md2 d-flex>
-              <v-img
-                :src="`https://picsum.photos/500/300?image=${n * 5 + 10}`"
-                :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
-                aspect-ratio=".7"
-                class="grey lighten-2"
-              >
-                <template v-slot:placeholder>
-                  <v-layout fill-height align-center justify-center ma-0>
-                    <v-progress-circular
-                      indeterminate
-                      color="grey lighten-5"
-                    ></v-progress-circular>
-                  </v-layout>
-                </template>
-              </v-img>
-            </v-flex>
-          </v-layout>
-        </v-container>
+        <v-flex xs12>
+          <Spinner size="medium" style="min-height: 500px" />
+          <div v-if="loading">loading...</div>
+          <ImageGrid v-else :posts="posts" />
+        </v-flex>
       </v-layout>
     </v-container>
   </v-container>
@@ -57,12 +41,17 @@
 import Intro from '@/components/home/Intro';
 import Social from '@/components/home/Social';
 import Title from '@/components/common/Title';
+import ImageGrid from '@/components/common/ImageGrid';
+import Spinner from '@/components/common/Spinner';
+import request from '@/lib/request';
 
 export default {
   components: {
     Intro,
     Social,
-    Title
+    Title,
+    ImageGrid,
+    Spinner
   },
   data() {
     return {
@@ -72,13 +61,23 @@ export default {
         { title: 'Xem nhiều', value: 'views' },
         { title: 'Ngẫu nhiên', value: 'random' }
       ],
-      activeIndex: 0
+      activeIndex: 0,
+      posts: [],
+      loading: false
     };
   },
   methods: {
     handleClick(index) {
       this.activeIndex = index;
     }
+  },
+  async created() {
+    this.loading = true;
+
+    const response = await request(`/posts/${this.sort[0].value}`);
+    this.posts = response.posts;
+
+    this.loading = false;
   }
 };
 </script>
