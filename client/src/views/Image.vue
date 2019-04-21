@@ -1,14 +1,21 @@
 <template>
   <v-container>
     <v-layout row wrap>
-      <v-flex xs12 md9>
-        <Spinner v-if="image.loading" size="medium" style="min-height: 75vh" />
-        <ImageDetail v-else :data="image.data" />
-      </v-flex>
+      <Spinner
+        v-if="image.loading"
+        size="medium"
+        style="min-height: 75vh;width: 100%"
+      />
 
-      <v-flex md3>
-        <ArtistInfo />
-      </v-flex>
+      <template v-else>
+        <v-flex xs12 md9>
+          <ImageDetail :data="image.data" />
+        </v-flex>
+
+        <v-flex md3>
+          <ArtistInfo :artist-name="image.data.artist" />
+        </v-flex>
+      </template>
     </v-layout>
 
     <v-divider class="my-3" />

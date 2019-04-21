@@ -24,6 +24,7 @@ if (isDev) {
 
 app.use('/api/images', require('./routes/images'));
 app.use('/api/image', require('./routes/image'));
+app.use('/api/artist', require('./routes/artist'));
 app.use(require('./lib/errorHandlers').sendErrorMessage);
 
 if (!isDev) {
