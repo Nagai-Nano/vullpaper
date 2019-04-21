@@ -21,7 +21,7 @@ export default {
 
     return h(
       'div',
-      { class: `flex xs12 ${data.staticClass}` },
+      { class: `flex xs12 ${data.staticClass || ''}` },
       [
         h(
           'h1',

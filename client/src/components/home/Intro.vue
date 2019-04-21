@@ -1,12 +1,9 @@
 <template>
-  <Hero
-    src="https://scontent.fsgn2-2.fna.fbcdn.net/v/t1.0-9/52598936_2630826093624064_7193281505890664448_n.jpg?_nc_cat=100&_nc_eui2=AeHbUIv5X4Dfs61NTp2rpz5M6LEuOEcKSO-qe-uJgqXbgrvKy0XUp0mjecJOqsZkqQ9OGAXMsleCN3Nd4chK3tKP1gWZ0ABYC6U5609Bnj--Aw&_nc_oc=AQm9LBrEX7LYZfoDzc1MsAwR7pAq48IzE3cedRZuGySSxXiz0Ik3ZRr882cJddXMVpY&_nc_ht=scontent.fsgn2-2.fna&oh=2c7cce153ae47ec7d354b49d6eb1738c&oe=5D72A470"
-    max-height="35rem"
-  >
+  <Hero max-height="35rem" position="top left">
     <v-container>
       <Title title="vullpaper" light />
 
-      <span class="title white--text letter-spacing font-weight-regular">
+      <span class="headline white--text letter-spacing font-weight-regular">
         Nơi tổng hợp ảnh Anime & Manga mới nhất
       </span>
       <div class="mt-2">

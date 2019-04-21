@@ -3,7 +3,7 @@
     <v-layout wrap>
       <v-flex xs12>
         <Title
-          class="text-xs-center mt-2"
+          class="text-xs-center mt-4 pt-2"
           line-space="mx-auto"
           :title="sort[activeIndex].title"
         />
@@ -25,7 +25,17 @@
 
       <v-flex xs12>
         <Spinner v-if="loading" size="large" style="min-height: 35rem" />
-        <ImageGrid v-else :images="images" />
+        <template v-else>
+          <ImageGrid :images="images" />
+          <v-btn
+            :to="`/images/?q=${sort[activeIndex].value}`"
+            flat
+            block
+            class="bg-primary white--text letter-spacing"
+          >
+            Xem thêm
+          </v-btn>
+        </template>
       </v-flex>
     </v-layout>
   </v-container>

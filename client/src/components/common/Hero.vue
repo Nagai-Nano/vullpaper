@@ -1,5 +1,10 @@
 <template>
-  <v-layout row wrap class="p-relative">
+  <v-layout
+    row
+    wrap
+    class="p-relative"
+    :style="{ 'max-height': $attrs.maxHeight || 'auto' }"
+  >
     <v-flex xs12>
       <Imagex v-bind="$attrs" />
     </v-flex>
@@ -18,6 +23,23 @@ import Imagex from '@/components/common/Imagex';
 export default {
   components: {
     Imagex
+  },
+  data() {
+    return {
+      imageCount: 20
+    };
+  },
+  computed: {
+    randomIndex() {
+      return Math.floor(Math.random() * this.imageCount) + 1;
+    }
+  },
+  created() {
+    if (!this.$attrs.src) {
+      this.$attrs.src = `https://res.cloudinary.com/nanu/image/upload/${
+        this.randomIndex
+      }.jpg`;
+    }
   }
 };
 </script>

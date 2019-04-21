@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-md fluid pt-3>
+  <v-container grid-list-md fluid pt-3 px-0 pb-2>
     <v-layout row wrap>
       <v-flex v-for="image in images" :key="image.id" xs4 md2 d-flex>
         <Imagex
