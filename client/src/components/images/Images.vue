@@ -38,8 +38,10 @@ export default {
       this.loading = true;
       this.page++;
 
-      const response = await request(`/posts/${this.q}?page=${this.page}`);
-      this.images = [...this.images, ...response.posts];
+      const response = await request(
+        `/images/${encodeURIComponent(this.q)}?page=${this.page}`
+      );
+      this.images = [...this.images, ...response.images];
       this.hasMore = response.hasMore;
 
       this.loading = false;
@@ -48,8 +50,8 @@ export default {
   async created() {
     this.loading = true;
 
-    const response = await request(`/posts/${this.q}`);
-    this.images = response.posts;
+    const response = await request(`/images/${encodeURIComponent(this.q)}`);
+    this.images = response.images;
     this.hasMore = response.hasMore;
 
     this.loading = false;

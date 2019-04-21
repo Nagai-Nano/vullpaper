@@ -37,10 +37,10 @@ router.get(
 
     const { body } = await rp(`${API_HOST}${endpoint}`);
 
-    if (!body.length) return res.json({ posts: [], hasMore: false });
+    if (!body.length) return res.json({ images: [], hasMore: false });
 
-    const posts = filterDataFields(body);
-    res.json({ posts, hasMore: true });
+    const images = filterDataFields(body);
+    res.json({ images, hasMore: true });
   })
 );
 

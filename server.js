@@ -22,7 +22,8 @@ if (isDev) {
   app.use(require('cors')());
 }
 
-app.use('/api/posts', require('./routes/posts'));
+app.use('/api/images', require('./routes/images'));
+app.use('/api/image', require('./routes/image'));
 app.use(require('./lib/errorHandlers').sendErrorMessage);
 
 if (!isDev) {

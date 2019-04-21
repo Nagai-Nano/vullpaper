@@ -68,9 +68,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-.hover-color:hover > i {
-  color: #41b883 !important;
-}
-</style>

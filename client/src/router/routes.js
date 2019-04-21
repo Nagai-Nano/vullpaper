@@ -15,6 +15,18 @@ export default [
     }
   },
   {
+    path: '/image/:id',
+    name: 'image',
+    props: true,
+    component: () => import('@/views/Image'),
+    beforeEnter: (to, from, next) => {
+      if (isNaN(to.params.id) || +to.params.id < 1)
+        return next({ name: 'error', params: { code: 404 } });
+
+      next();
+    }
+  },
+  {
     path: '/error',
     name: 'error',
     props: true,

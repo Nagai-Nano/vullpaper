@@ -71,9 +71,9 @@ export default {
       this.loading = true;
 
       const response = await request(
-        `/posts/${this.sort[this.activeIndex].value}`
+        `/images/${this.sort[this.activeIndex].value}`
       );
-      this.images = response.posts;
+      this.images = response.images;
 
       this.loading = false;
     },

@@ -54,6 +54,10 @@ li {
   text-decoration: underline;
 }
 
+.hover-color:hover > i {
+  color: #41b883 !important;
+}
+
 .v-input__slot {
   border: 1px solid #bdbdbd;
   margin-bottom: 0px !important;
