@@ -7,6 +7,16 @@ const { rp, download } = require('../lib/request');
 const API_HOST = process.env.API_HOST;
 
 router.get(
+  '/download',
+  catchErrors(async (req, res) => {
+    const { uri } = req.query;
+    if (!uri) return next({ message: 'Invalid Parameters' });
+
+    await download(res, uri);
+  })
+);
+
+router.get(
   '/:id',
   catchErrors(async (req, res, next) => {
     const { id } = req.params;
@@ -21,7 +31,7 @@ router.get(
       created: image.created_at,
       tags: image.tag_string,
       artist: image.tag_string_artist,
-      url: image.file_url
+      uri: image.file_url.split('/').slice(-1)[0]
     });
   })
 );
@@ -41,18 +51,6 @@ router.get(
       title: desc[0].original_title,
       description: desc[0].original_description
     });
-  })
-);
-
-router.get(
-  '/:id/download',
-  catchErrors(async (req, res) => {
-    const { id } = req.params;
-    const { url } = req.query;
-
-    if (!url) return next({ message: 'Invalid Parameters' });
-
-    await download(res, { id, url });
   })
 );
 

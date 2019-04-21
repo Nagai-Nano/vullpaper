@@ -10,7 +10,7 @@ router.get(
   '/',
   catchErrors(async (req, res, next) => {
     const { name } = req.query;
-    if (!name) return next({ status: 400, message: 'Invalid Parameter' });
+    if (!name) return next({ message: 'Invalid Parameter' });
 
     const { body } = await rp(`${API_HOST}/artists.json?search[name]=${name}`);
 

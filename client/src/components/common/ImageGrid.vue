@@ -16,7 +16,10 @@
             <a @click.prevent class="d-inline-block mr-2 pr-1 mb-1 white--text">
               <i class="fas fa-heart" style="font-size: 1.5rem" />
             </a>
-            <a @click.prevent class="d-inline-block mr-2 mb-1 white--text">
+            <a
+              @click.prevent="download(image.uri)"
+              class="d-inline-block mr-2 mb-1 white--text"
+            >
               <i class="fas fa-download" style="font-size: 1.5rem" />
             </a>
           </div>
@@ -38,6 +41,16 @@ export default {
   },
   components: {
     Imagex
+  },
+  methods: {
+    download(uri) {
+      let a = document.createElement('a');
+      a.href = `/api/image/download?uri=${uri}`;
+      a.download = uri;
+      a.click();
+
+      a = null;
+    }
   }
 };
 </script>

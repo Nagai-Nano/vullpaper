@@ -2,7 +2,7 @@
   <div>
     <Imagex
       v-once
-      :src="imageUrl"
+      :src="`/api/image/download?uri=${data.uri}`"
       height="75vh"
       contain
       class="grey lighten-3"
@@ -77,12 +77,6 @@ export default {
   components: {
     Imagex,
     Spinner
-  },
-  computed: {
-    imageUrl() {
-      const { id, url } = this.data;
-      return `/api/image/${id}/download?url=${url}`;
-    }
   },
   async created() {
     const response = await request(`/image/${this.data.id}/description`);
