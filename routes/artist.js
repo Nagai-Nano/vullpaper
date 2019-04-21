@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const { catchErrors } = require('../lib/errorHandlers');
-const rp = require('../lib/request');
+const { rp } = require('../lib/request');
 
 const API_HOST = process.env.API_HOST;
 

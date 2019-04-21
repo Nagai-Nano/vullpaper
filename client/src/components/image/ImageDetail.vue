@@ -1,12 +1,25 @@
 <template>
   <div>
-    <Imagex :src="data.url" max-height="75vh" contain class="grey lighten-3" />
+    <Imagex
+      v-once
+      :src="imageUrl"
+      height="75vh"
+      contain
+      class="grey lighten-3"
+    />
     <Spinner v-if="loading" />
     <template v-else>
-      <h1 v-if="desc.title" class="font-weight-regular my-1">
+      <h1
+        v-if="desc.title"
+        class="font-weight-regular my-2"
+        style="line-height: 1!important"
+      >
         {{ desc.title }}
       </h1>
-      <h3 v-if="desc.description" class="font-weight-regular letter-spacing">
+      <h3
+        v-if="desc.description"
+        class="font-weight-regular letter-spacing mt-2"
+      >
         {{ desc.description }}
       </h3>
     </template>
@@ -35,7 +48,7 @@
         :key="tag"
         depressed
         class="ml-0 mr-2 mb-1 bg-primary white--text"
-        :to="`/${encodeURIComponent(tag)}`"
+        :to="`/images/?q=${encodeURIComponent(tag)}`"
       >
         <i class="fas fa-tag mr-2" />{{ tag }}
       </v-btn>
@@ -64,6 +77,12 @@ export default {
   components: {
     Imagex,
     Spinner
+  },
+  computed: {
+    imageUrl() {
+      const { id, url } = this.data;
+      return `/api/image/${id}/download?url=${url}`;
+    }
   },
   async created() {
     const response = await request(`/image/${this.data.id}/description`);
