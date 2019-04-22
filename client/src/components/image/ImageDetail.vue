@@ -25,7 +25,7 @@
     </template>
     <div class="mt-2 d-flex align-content-space-between align-center">
       <span class="my-2 subheading font-weight-regular">
-        Created {{ image.created }}
+        Ngày đăng: {{ image.created | formattedDate }}
       </span>
       <div class="text-xs-right">
         <a class="grey--text text--darken-2 hover-color" title="favorite">
@@ -82,6 +82,18 @@ export default {
     imageUrl() {
       const { uri, large } = this.image;
       return `/api/image/download?uri=${large || uri}`;
+    }
+  },
+  filters: {
+    formattedDate(value) {
+      const date = new Date(Date.parse(value)).toLocaleDateString('en-US', {
+        year: 'numeric',
+        day: '2-digit',
+        month: '2-digit'
+      });
+
+      const [month, day, year] = date.split('/');
+      return [day, month, year].join('/');
     }
   },
   async created() {
