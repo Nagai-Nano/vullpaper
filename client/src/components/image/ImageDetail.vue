@@ -24,15 +24,21 @@
       </h3>
     </template>
     <div class="mt-2 d-flex align-content-space-between align-center">
-      <span class="my-2 subheading font-weight-regular">
+      <span
+        class="grey--text text--darken-2 my-2 subheading font-weight-regular"
+      >
         Ngày đăng: {{ image.created | formattedDate }}
       </span>
       <div class="text-xs-right">
-        <a class="grey--text text--darken-2 hover-color" title="favorite">
-          <i style="font-size: 1.6rem;" class="fas fa-heart mr-3" />
-        </a>
-        <a class="grey--text text--darken-2 hover-color" title="download">
-          <i style="font-size: 1.6rem;" class="fas fa-download" />
+        <a
+          v-for="action in ['heart', 'download', 'link']"
+          :key="action"
+          :class="{ 'mx-3': action === 'download' }"
+          class="grey--text text--darken-2 hover-color"
+          :title="action"
+          @click.prevent="onClick(action)"
+        >
+          <i style="font-size: 1.8rem;" :class="`fas fa-${action}`" />
         </a>
       </div>
     </div>
@@ -59,6 +65,7 @@
 <script>
 import Imagex from '../common/Imagex';
 import Spinner from '../common/Spinner';
+import { download, heart, link } from '@/lib/functions';
 import request from '@/lib/request';
 
 export default {
@@ -77,6 +84,14 @@ export default {
   components: {
     Imagex,
     Spinner
+  },
+  methods: {
+    download,
+    heart,
+    link,
+    onClick(action) {
+      this[action](this.image);
+    }
   },
   computed: {
     imageUrl() {

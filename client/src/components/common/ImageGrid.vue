@@ -13,11 +13,14 @@
             class="p-absolute fill-height fill-width overlay t-0 l-0 hover-overlay"
           />
           <div class="p-absolute r-0 b-0">
-            <a @click.prevent class="d-inline-block mr-2 pr-1 mb-1 white--text">
+            <a
+              @click.prevent="heart(image)"
+              class="d-inline-block mr-2 pr-1 mb-1 white--text"
+            >
               <i class="fas fa-heart" style="font-size: 1.5rem" />
             </a>
             <a
-              @click.prevent="download(image.uri)"
+              @click.prevent="download(image)"
               class="d-inline-block mr-2 mb-1 white--text"
             >
               <i class="fas fa-download" style="font-size: 1.5rem" />
@@ -31,6 +34,7 @@
 
 <script>
 import Imagex from './Imagex';
+import { heart, download } from '@/lib/functions';
 
 export default {
   props: {
@@ -43,14 +47,8 @@ export default {
     Imagex
   },
   methods: {
-    download(uri) {
-      let a = document.createElement('a');
-      a.href = `/api/image/download?uri=${uri}`;
-      a.download = uri;
-      a.click();
-
-      a = null;
-    }
+    heart,
+    download
   }
 };
 </script>

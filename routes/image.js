@@ -30,6 +30,7 @@ router.get(
     res.json({
       id: image.id,
       created: image.created_at,
+      source: image.source,
       tags: image.tag_string,
       relatedTags: getRandomTags(
         image.tag_string_character ||

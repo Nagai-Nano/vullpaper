@@ -24,7 +24,7 @@
       </a>
     </template>
     <template v-if="!loading && !hasArtistInfo">
-      <span class="grey--text subheading">Not found</span>
+      <span class="grey--text subheading">Không tìm thấy</span>
     </template>
   </div>
 </template>
