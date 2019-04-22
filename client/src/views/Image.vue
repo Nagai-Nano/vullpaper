@@ -2,23 +2,26 @@
   <v-container>
     <v-layout row wrap>
       <Spinner
-        v-if="image.loading"
+        v-if="loading"
         size="medium"
-        style="min-height: 75vh;width: 100%"
+        style="min-height: 90vh;width: 100%"
       />
 
       <template v-else>
         <v-flex xs12 md9>
-          <ImageDetail :data="image.data" />
+          <ImageDetail :image="image" />
         </v-flex>
 
         <v-flex md3>
-          <ArtistInfo :artist-name="image.data.artist" />
+          <ArtistInfo :artist-name="image.artist" />
         </v-flex>
       </template>
     </v-layout>
 
-    <v-divider class="my-3" />
+    <template v-if="!loading">
+      <v-divider class="my-3" />
+      <RelatedImages :tags="image.relatedTags" />
+    </template>
   </v-container>
 </template>
 
@@ -26,6 +29,7 @@
 import request from '@/lib/request';
 import ImageDetail from '@/components/image/ImageDetail';
 import ArtistInfo from '@/components/image/ArtistInfo';
+import RelatedImages from '@/components/image/RelatedImages';
 import Spinner from '@/components/common/Spinner';
 
 export default {
@@ -37,22 +41,21 @@ export default {
   },
   data() {
     return {
-      image: {
-        loading: true,
-        data: {}
-      }
+      loading: true,
+      image: {}
     };
   },
   components: {
     ImageDetail,
     ArtistInfo,
+    RelatedImages,
     Spinner
   },
   async created() {
     const response = await request(`/image/${this.id}`);
 
-    this.image.data = response;
-    this.image.loading = false;
+    this.image = response;
+    this.loading = false;
   }
 };
 </script>

@@ -1,8 +1,7 @@
 <template>
   <div>
     <Imagex
-      v-once
-      :src="`/api/image/download?uri=${data.uri}`"
+      :src="`/api/image/download?uri=${image.uri}`"
       height="75vh"
       contain
       class="grey lighten-3"
@@ -25,7 +24,7 @@
     </template>
     <div class="mt-2 d-flex align-content-space-between align-center">
       <span class="my-2 subheading font-weight-regular">
-        Created {{ data.created }}
+        Created {{ image.created }}
       </span>
       <div class="text-xs-right">
         <a class="grey--text text--darken-2 hover-color" title="favorite">
@@ -37,14 +36,14 @@
       </div>
     </div>
 
-    <v-divider class="mb-2" />
+    <v-divider class="mb-3" />
 
     <div>
       <h1 class="headline letter-spacing text-uppercase">
         Tags
       </h1>
       <v-btn
-        v-for="tag in data.tags.split(' ')"
+        v-for="tag in image.tags.split(' ')"
         :key="tag"
         depressed
         class="ml-0 mr-2 mb-1 bg-primary white--text"
@@ -63,7 +62,7 @@ import request from '@/lib/request';
 
 export default {
   props: {
-    data: {
+    image: {
       type: Object,
       required: true
     }
@@ -79,7 +78,7 @@ export default {
     Spinner
   },
   async created() {
-    const response = await request(`/image/${this.data.id}/description`);
+    const response = await request(`/image/${this.image.id}/description`);
     this.desc = response;
     this.loading = false;
   }
