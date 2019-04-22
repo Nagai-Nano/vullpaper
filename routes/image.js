@@ -37,7 +37,8 @@ router.get(
           image.tag_string_general
       ),
       artist: image.tag_string_artist,
-      uri: image.file_url.split('/').slice(-1)[0]
+      uri: image.file_url.split('/').slice(-1)[0],
+      large: image.large_file_url.split('/').slice(-1)[0]
     });
   })
 );

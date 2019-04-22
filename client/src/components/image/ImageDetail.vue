@@ -1,7 +1,8 @@
 <template>
   <div>
     <Imagex
-      :src="`/api/image/download?uri=${image.uri}`"
+      v-once
+      :src="imageUrl"
       height="75vh"
       contain
       class="grey lighten-3"
@@ -76,6 +77,12 @@ export default {
   components: {
     Imagex,
     Spinner
+  },
+  computed: {
+    imageUrl() {
+      const { uri, large } = this.image;
+      return `/api/image/download?uri=${large || uri}`;
+    }
   },
   async created() {
     const response = await request(`/image/${this.image.id}/description`);
