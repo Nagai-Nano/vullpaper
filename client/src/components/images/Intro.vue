@@ -1,5 +1,5 @@
 <template>
-  <Hero position="top center" height="25rem">
+  <Hero height="30rem">
     <v-container>
       <Title :title="intro[0]" light />
       <span class="headline white--text letter-spacing font-weight-regular">

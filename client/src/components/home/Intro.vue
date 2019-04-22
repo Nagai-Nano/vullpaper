@@ -1,5 +1,5 @@
 <template>
-  <Hero max-height="35rem" position="top left">
+  <Hero max-height="35rem">
     <v-container>
       <Title title="vullpaper" light />
 
@@ -10,6 +10,7 @@
         <v-btn
           class="bg-primary white--text letter-spacing"
           flat
+          large
           style="margin-left: auto"
           @click="scrollToImages"
         >
@@ -18,6 +19,7 @@
         <v-btn
           tag="a"
           outline
+          large
           color="white"
           class="ml-1 letter-spacing"
           href="https://github.com/nagai-Nano/vullpaper"

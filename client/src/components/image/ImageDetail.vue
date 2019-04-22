@@ -11,7 +11,7 @@
     <template v-else>
       <h1
         v-if="desc.title"
-        class="font-weight-regular my-2"
+        class="font-weight-regular mt-3 mb-2"
         style="line-height: 1!important"
       >
         {{ desc.title }}

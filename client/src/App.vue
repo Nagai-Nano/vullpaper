@@ -2,7 +2,7 @@
   <v-app>
     <Header />
     <v-content>
-      <router-view />
+      <router-view :key="$route.path" />
     </v-content>
   </v-app>
 </template>

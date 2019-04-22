@@ -3,10 +3,10 @@
     row
     wrap
     class="p-relative"
-    :style="{ 'max-height': $attrs.maxHeight || 'auto' }"
+    :style="{ 'max-height': $attrs.maxHeight || $attrs.height || 'auto' }"
   >
     <v-flex xs12>
-      <Imagex v-bind="$attrs" />
+      <Imagex v-bind="$attrs" position="top center" />
     </v-flex>
     <v-flex
       xs12

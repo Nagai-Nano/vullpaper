@@ -27,6 +27,11 @@ export default [
     }
   },
   {
+    path: '/tags',
+    name: 'tags',
+    component: () => import('@/views/Tags')
+  },
+  {
     path: '/error',
     name: 'error',
     props: true,

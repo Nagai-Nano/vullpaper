@@ -15,13 +15,13 @@
           <div class="p-absolute r-0 b-0">
             <a
               @click.prevent="heart(image)"
-              class="d-inline-block mr-2 pr-1 mb-1 white--text"
+              class="d-inline-block mr-2 pr-1 mb-1 white--text hover-color"
             >
               <i class="fas fa-heart" style="font-size: 1.5rem" />
             </a>
             <a
               @click.prevent="download(image)"
-              class="d-inline-block mr-2 mb-1 white--text"
+              class="d-inline-block mr-2 mb-1 white--text hover-color"
             >
               <i class="fas fa-download" style="font-size: 1.5rem" />
             </a>

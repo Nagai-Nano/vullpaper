@@ -1,6 +1,6 @@
 <template>
   <header>
-    <v-toolbar app>
+    <v-toolbar app flat>
       <v-toolbar-title class="letter-spacing headline">
         <router-link
           to="/"
@@ -23,11 +23,33 @@
       <v-spacer />
 
       <v-toolbar-items>
-        <v-btn to="/" flat>Home</v-btn>
-        <v-btn to="/login" flat>Login</v-btn>
+        <v-btn class="p-relative" to="/" flat active-class="router-active">
+          Home
+        </v-btn>
+        <v-btn
+          class="p-relative"
+          to="/images/?q=newest"
+          flat
+          active-class="router-active"
+        >
+          Images
+        </v-btn>
+        <v-btn class="p-relative" to="/tags" flat active-class="router-active">
+          Tags
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
   </header>
 </template>
 
-<script></script>
+<style scoped>
+.router-active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background: #41b883;
+}
+</style>

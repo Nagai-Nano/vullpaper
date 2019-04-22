@@ -54,7 +54,8 @@ li {
   text-decoration: underline;
 }
 
-.hover-color:hover > i {
+.hover-color:hover > i,
+.hover-color:hover > a.d-block.grey--text.text--darken-2 {
   color: #41b883 !important;
 }
 

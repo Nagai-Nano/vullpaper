@@ -19,6 +19,7 @@
           <v-btn
             tag="a"
             :href="s.link"
+            large
             target="_blank"
             class="d-block bg-primary letter-spacing mt-3"
             color="white"

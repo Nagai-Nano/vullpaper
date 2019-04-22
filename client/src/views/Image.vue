@@ -1,10 +1,10 @@
 <template>
-  <v-container>
+  <v-container pt-5>
     <v-layout row wrap>
       <Spinner
         v-if="loading"
         size="medium"
-        style="min-height: 90vh;width: 100%"
+        style="min-height: 80vh;width: 100%"
       />
 
       <template v-else>
