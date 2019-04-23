@@ -27,3 +27,16 @@ export const link = ({ source }) => {
 
   window.open(source, '_blank');
 };
+
+export const debounced = (fn, delay) => {
+  let timerId;
+
+  return function(...args) {
+    if (timerId) clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      fn(this, ...args);
+
+      timerId = null;
+    }, delay);
+  };
+};

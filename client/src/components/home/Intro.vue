@@ -11,9 +11,9 @@
         :class="bp.smAndDown ? 'title' : 'headline'"
         class="white--text letter-spacing font-weight-regular"
       >
-        Nơi tổng hợp ảnh Anime & Manga mới nhất
+        Nơi tổng hợp ảnh Anime & Manga
       </span>
-      <div class="mt-2">
+      <div>
         <v-btn
           class="bg-primary white--text letter-spacing"
           flat

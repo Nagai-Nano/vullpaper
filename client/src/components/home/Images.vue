@@ -32,7 +32,7 @@
       <v-flex xs12>
         <Spinner v-if="loading" />
         <template v-else>
-          <ImageGrid :images="images" class="pt-1" />
+          <ImageGrid :images="images" class="pt-2" />
           <v-btn
             :to="`/images/?q=${sort[activeIndex].value}`"
             flat

@@ -8,7 +8,7 @@
       />
       <span
         :class="bp.smAndDown ? 'title' : 'headline'"
-        class="mt-2 white--text letter-spacing font-weight-regular d-block"
+        class="mt-2 pt-1 white--text letter-spacing font-weight-regular d-block"
       >
         {{ intro[1] }}
       </span>

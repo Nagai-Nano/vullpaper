@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-md fluid px-0 pb-2 pt-0>
     <v-layout row wrap>
-      <v-flex v-for="image in images" :key="image.id" xs4 sm2 d-flex>
+      <v-flex v-for="image in images" :key="image.id" xs4 sm3 md2 d-flex>
         <Imagex
           :src="image.preview"
           aspect-ratio=".7"
@@ -20,7 +20,7 @@
             >
               <i
                 class="fas fa-heart"
-                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1rem' }"
+                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1.2rem' }"
               />
             </a>
             <a
@@ -29,7 +29,7 @@
             >
               <i
                 class="fas fa-download"
-                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1rem' }"
+                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1.2rem' }"
               />
             </a>
           </div>

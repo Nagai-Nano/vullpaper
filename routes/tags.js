@@ -42,4 +42,19 @@ router.get(
   })
 );
 
+router.get(
+  '/search',
+  catchErrors(async (req, res, next) => {
+    const { q } = req.query;
+    if (!q) return next({ message: 'Missing Parameter' });
+
+    const { body } = await rp(
+      `${API_HOST}/tags.json?search[name_matches]=${q}*&search[hide_empty]=yes&limit=10`
+    );
+
+    const tags = body.map(({ id, name }) => ({ id, name }));
+    res.json({ tags });
+  })
+);
+
 module.exports = router;

@@ -68,3 +68,7 @@ li {
 .container.d-flex.pt-2 .v-btn__content {
   height: 100% !important;
 }
+
+.v-progress-linear {
+  height: 3px !important;
+}
