@@ -1,16 +1,23 @@
 <template>
-  <Hero max-height="35rem">
+  <Hero :height="bp.smAndDown ? '20rem' : '35rem'">
     <v-container>
-      <Title title="vullpaper" light />
+      <Title
+        :font="bp.smAndDown ? 'display-1' : 'display-2'"
+        title="vullpaper"
+        light
+      />
 
-      <span class="headline white--text letter-spacing font-weight-regular">
+      <span
+        :class="bp.smAndDown ? 'title' : 'headline'"
+        class="white--text letter-spacing font-weight-regular"
+      >
         Nơi tổng hợp ảnh Anime & Manga mới nhất
       </span>
       <div class="mt-2">
         <v-btn
           class="bg-primary white--text letter-spacing"
           flat
-          large
+          :large="bp.mdAndUp"
           style="margin-left: auto"
           @click="scrollToImages"
         >
@@ -19,7 +26,7 @@
         <v-btn
           tag="a"
           outline
-          large
+          :large="bp.mdAndUp"
           color="white"
           class="ml-1 letter-spacing"
           href="https://github.com/nagai-Nano/vullpaper"
@@ -36,8 +43,10 @@
 <script>
 import Hero from '../common/Hero';
 import Title from '../common/Title';
+import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
+  mixins: [breakpointMixin],
   components: {
     Hero,
     Title

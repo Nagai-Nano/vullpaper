@@ -7,7 +7,7 @@
     </v-flex>
     <v-flex xs12>
       <Spinner v-if="loading && !images.length" />
-      <ImageGrid :images="images" />
+      <ImageGrid :images="images" class="pt-2" />
     </v-flex>
   </v-layout>
 </template>

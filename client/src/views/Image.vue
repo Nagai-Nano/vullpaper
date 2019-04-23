@@ -1,5 +1,5 @@
 <template>
-  <v-container pt-5>
+  <v-container :pt-4="bp.smAndDown" :pt-5="bp.mdAndUp">
     <v-layout row wrap>
       <Spinner
         v-if="loading"
@@ -12,14 +12,14 @@
           <ImageDetail :image="image" />
         </v-flex>
 
-        <v-flex md3>
+        <v-flex md3 v-if="bp.mdAndUp">
           <ArtistInfo :artist-name="image.artist" />
         </v-flex>
       </template>
     </v-layout>
 
     <template v-if="!loading">
-      <v-divider class="my-3" />
+      <v-divider :class="{ 'my-3': bp.mdAndUp, 'my-2': bp.smAndDown }" />
       <RelatedImages :tags="image.relatedTags" />
     </template>
   </v-container>
@@ -31,8 +31,10 @@ import ImageDetail from '@/components/image/ImageDetail';
 import ArtistInfo from '@/components/image/ArtistInfo';
 import RelatedImages from '@/components/image/RelatedImages';
 import Spinner from '@/components/common/Spinner';
+import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
+  mixins: [breakpointMixin],
   props: {
     id: {
       type: [Number, String],

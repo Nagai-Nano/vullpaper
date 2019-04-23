@@ -1,27 +1,44 @@
 <template>
-  <Hero :src="require('@/assets/bg-pattern.png')" max-height="32rem">
+  <Hero :src="require('@/assets/bg-pattern.png')" height="32rem">
     <v-layout
       row
       wrap
       class="d-flex text-xs-center fill-height align-content-center"
       style="background: rgba(17, 17, 17, .9);"
     >
-      <Title title="otaku sanctuary" light line-space="mx-auto" />
-
-      <div class="container d-flex pt-2 justify-space-around">
+      <Title
+        title="otaku sanctuary"
+        light
+        line-space="mx-auto"
+        :font="bp.smAndDown ? 'display-1' : 'display-2'"
+      />
+      <span class="white--text">{{ bp }}</span>
+      <div class="container d-flex pt-2 justify-space-around layout wrap">
         <div
           v-for="(s, i) in socials"
           :key="s.link"
-          class="rounded white pa-5 cursor-pointer hover-color"
-          :class="{ 'mr-3': i < 3 }"
+          class="rounded white cursor-pointer hover-color"
+          :class="{
+            'mr-3': bp.mdAndUp && i < 3,
+            'pa-5': bp.lgOnly,
+            'pa-4': bp.mdOnly,
+            'pa-2': bp.smAndDown,
+            'mt-2': bp.smAndDown && i > 1,
+            'mr-2': bp.smAndDown && i % 2 === 0
+          }"
         >
-          <i style="font-size: 5rem; transition: all .3s" :class="s.icon" />
+          <i
+            :style="{ 'font-size': bp.mdAndUp ? '5rem' : '4rem' }"
+            style="transition: all .3s"
+            :class="s.icon"
+          />
           <v-btn
             tag="a"
             :href="s.link"
             large
+            block
             target="_blank"
-            class="d-block bg-primary letter-spacing mt-3"
+            class="bg-primary letter-spacing mt-3"
             color="white"
             flat
           >
@@ -29,7 +46,10 @@
           </v-btn>
         </div>
       </div>
-      <p class="headline white--text text-uppercase letter-spacing ma-0">
+      <p
+        :class="{ headline: bp.mdAndUp, subheading: bp.smAndDown }"
+        class="white--text text-uppercase letter-spacing ma-0 font-weight-regular"
+      >
         Nhớ ấn Like để ủng hộ Page nhé :)
       </p>
     </v-layout>
@@ -39,8 +59,10 @@
 <script>
 import Hero from '../common/Hero';
 import Title from '../common/Title';
+import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
+  mixins: [breakpointMixin],
   components: {
     Hero,
     Title

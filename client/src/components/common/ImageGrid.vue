@@ -1,7 +1,7 @@
 <template>
-  <v-container grid-list-md fluid pt-3 px-0 pb-2>
+  <v-container grid-list-md fluid px-0 pb-2 pt-0>
     <v-layout row wrap>
-      <v-flex v-for="image in images" :key="image.id" xs4 md2 d-flex>
+      <v-flex v-for="image in images" :key="image.id" xs4 sm2 d-flex>
         <Imagex
           :src="image.preview"
           aspect-ratio=".7"
@@ -15,15 +15,22 @@
           <div class="p-absolute r-0 b-0">
             <a
               @click.prevent="heart(image)"
-              class="d-inline-block mr-2 pr-1 mb-1 white--text hover-color"
+              class="d-inline-block pr-1 mb-1 white--text hover-color"
+              :class="{ 'mr-2': bp.mdAndUp }"
             >
-              <i class="fas fa-heart" style="font-size: 1.5rem" />
+              <i
+                class="fas fa-heart"
+                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1rem' }"
+              />
             </a>
             <a
               @click.prevent="download(image)"
               class="d-inline-block mr-2 mb-1 white--text hover-color"
             >
-              <i class="fas fa-download" style="font-size: 1.5rem" />
+              <i
+                class="fas fa-download"
+                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1rem' }"
+              />
             </a>
           </div>
         </Imagex>
@@ -35,8 +42,10 @@
 <script>
 import Imagex from './Imagex';
 import { heart, download } from '@/lib/functions';
+import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
+  mixins: [breakpointMixin],
   props: {
     images: {
       type: Array,
@@ -55,7 +64,7 @@ export default {
 
 <style scoped>
 .overlay {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.15);
   transition: background-color 0.5s;
 }
 

@@ -3,19 +3,25 @@
     <v-layout wrap>
       <v-flex xs12>
         <Title
-          class="text-xs-center mt-4 pt-2"
+          :font="bp.smAndDown ? 'display-1' : 'display-2'"
+          class="text-xs-center pt-2"
+          :class="{ 'mt-4': bp.mdAndUp }"
           line-space="mx-auto"
           :title="sort[activeIndex].title"
         />
       </v-flex>
 
-      <v-flex md6 offset-md3 class="text-xs-center">
-        <ul class="d-flex pt-2">
+      <v-flex xs12 md6 offset-md3 class="text-xs-center">
+        <ul class="d-flex pa-0" :class="{ 'pt-2': bp.mdAndUp }">
           <li
             v-for="(s, i) in sort"
             :key="s.value"
-            class="cursor-pointer title letter-spacing text-uppercase hover-underline"
-            :class="{ disabled: i === activeIndex }"
+            class="cursor-pointer letter-spacing text-uppercase hover-underline"
+            :class="{
+              disabled: i === activeIndex,
+              headline: bp.lgAndUp,
+              subheading: bp.mdOnly
+            }"
             @click="handleClick(i)"
           >
             {{ s.title }}
@@ -24,9 +30,9 @@
       </v-flex>
 
       <v-flex xs12>
-        <Spinner v-if="loading" size="large" style="min-height: 35rem" />
+        <Spinner v-if="loading" />
         <template v-else>
-          <ImageGrid :images="images" />
+          <ImageGrid :images="images" class="pt-1" />
           <v-btn
             :to="`/images/?q=${sort[activeIndex].value}`"
             flat
@@ -46,8 +52,10 @@ import Title from '@/components/common/Title';
 import ImageGrid from '@/components/common/ImageGrid';
 import Spinner from '@/components/common/Spinner';
 import request from '@/lib/request';
+import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
+  mixins: [breakpointMixin],
   components: {
     Title,
     ImageGrid,

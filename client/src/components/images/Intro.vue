@@ -1,8 +1,15 @@
 <template>
-  <Hero height="30rem">
+  <Hero :height="bp.smAndDown ? '15rem' : '28rem'">
     <v-container>
-      <Title :title="intro[0]" light />
-      <span class="headline white--text letter-spacing font-weight-regular">
+      <Title
+        :font="bp.smAndDown ? 'display-1' : 'display-2'"
+        :title="intro[0]"
+        light
+      />
+      <span
+        :class="bp.smAndDown ? 'title' : 'headline'"
+        class="mt-2 white--text letter-spacing font-weight-regular d-block"
+      >
         {{ intro[1] }}
       </span>
     </v-container>
@@ -12,8 +19,10 @@
 <script>
 import Hero from '../common/Hero';
 import Title from '../common/Title';
+import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
+  mixins: [breakpointMixin],
   props: {
     q: {
       type: String,

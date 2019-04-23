@@ -11,21 +11,23 @@
     <template v-else>
       <h1
         v-if="desc.title"
-        class="font-weight-regular mt-3 mb-2"
+        class="font-weight-regular mt-2 mb-2"
         style="line-height: 1!important"
       >
         {{ desc.title }}
       </h1>
-      <h3
+      <div
         v-if="desc.description"
-        class="font-weight-regular letter-spacing mt-2"
-      >
-        {{ desc.description }}
-      </h3>
+        v-html="desc.description"
+        class="mt-2 font-weight-regular"
+        :class="{ 'body-1': bp.smAndDown, title: bp.mdAndUp }"
+        style="white-space: pre-line"
+      />
     </template>
     <div class="mt-2 d-flex align-content-space-between align-center">
       <span
-        class="grey--text text--darken-2 my-2 subheading font-weight-regular"
+        :class="{ 'body-2': bp.smAndDown, subheading: bp.mdAndUp }"
+        class="grey--text text--darken-2 my-2 font-weight-regular"
       >
         Ngày đăng: {{ image.created | formattedDate }}
       </span>
@@ -38,20 +40,27 @@
           :title="action"
           @click.prevent="onClick(action)"
         >
-          <i style="font-size: 1.8rem;" :class="`fas fa-${action}`" />
+          <i
+            :style="{ 'font-size': bp.mdAndUp ? '1.8rem' : '1.4rem' }"
+            :class="`fas fa-${action}`"
+          />
         </a>
       </div>
     </div>
 
-    <v-divider class="mb-3" />
+    <v-divider :class="{ 'mb-3': bp.mdAndUp, 'mb-2': bp.smAndDown }" />
 
     <div>
-      <h1 class="headline letter-spacing text-uppercase">
+      <h1
+        class="headline letter-spacing text-uppercase"
+        style="line-height: 1!important"
+      >
         Tags
       </h1>
       <v-btn
         v-for="tag in image.tags.split(' ')"
         :key="tag"
+        :small="bp.smAndDown"
         depressed
         class="ml-0 mr-2 mb-1 bg-primary white--text"
         :to="`/images/?q=${encodeURIComponent(tag)}`"
@@ -66,9 +75,11 @@
 import Imagex from '../common/Imagex';
 import Spinner from '../common/Spinner';
 import { download, heart, link } from '@/lib/functions';
+import breakpointMixin from '@/lib/breakpointMixin';
 import request from '@/lib/request';
 
 export default {
+  mixins: [breakpointMixin],
   props: {
     image: {
       type: Object,

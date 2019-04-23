@@ -1,9 +1,16 @@
 <template>
   <v-container fluid ma-0 pa-0>
-    <Hero height="28rem">
+    <Hero :height="bp.smAndDown ? '15rem' : '28rem'">
       <v-container>
-        <Title title="tags" light />
-        <span class="headline white--text letter-spacing font-weight-regular">
+        <Title
+          title="tags"
+          light
+          :font="bp.smAndDown ? 'display-1' : 'display-2'"
+        />
+        <span
+          :class="bp.smAndDown ? 'title' : 'headline'"
+          class="white--text letter-spacing font-weight-regular"
+        >
           Danh sách tag có nhiều ảnh nhất
         </span>
       </v-container>
@@ -22,7 +29,12 @@
               tag="h1"
               :to="`/images?q=${tag.name}`"
               class="text-uppercase letter-spacing font-weight-regular hover-color"
-              style="line-height: 1!important"
+              :class="{
+                headline: bp.smAndDown,
+                'mt-1': bp.smAndDown,
+                'mb-2 pb-1': bp.mdAndUp
+              }"
+              style="line-height: 1!important; word-break: break-all;"
             >
               <a
                 class="decoration-none hover-underline d-block grey--text text--darken-2"
@@ -30,8 +42,8 @@
                 {{ tag.name }} ({{ tag.count | formattedCount }})
               </a>
             </router-link>
-            <ImageGrid :images="tag.images" />
-            <v-divider class="my-3" />
+            <ImageGrid :class="{ 'pt-2': bp.smAndDown }" :images="tag.images" />
+            <v-divider :class="{ 'my-3': bp.mdAndUp, 'my-2': bp.smAndDown }" />
           </v-flex>
         </v-layout>
       </InfiniteScroll>
@@ -51,9 +63,11 @@ import Title from '@/components/common/Title';
 import ImageGrid from '@/components/common/ImageGrid';
 import Spinner from '@/components/common/Spinner';
 import InfiniteScroll from '@/components/images/InfiniteScroll';
+import breakpointMixin from '@/lib/breakpointMixin';
 import request from '@/lib/request';
 
 export default {
+  mixins: [breakpointMixin],
   components: {
     Hero,
     Title,
