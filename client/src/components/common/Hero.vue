@@ -6,7 +6,7 @@
     :style="{ 'max-height': $attrs.maxHeight || $attrs.height || 'auto' }"
   >
     <v-flex xs12>
-      <Imagex v-bind="$attrs" position="top center" />
+      <Imagex v-bind="$attrs" position="top right" />
     </v-flex>
     <v-flex
       xs12
