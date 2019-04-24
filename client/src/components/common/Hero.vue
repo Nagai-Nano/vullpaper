@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      imageCount: 20
+      imageCount: 29
     };
   },
   computed: {
@@ -38,7 +38,7 @@ export default {
     if (!this.$attrs.src) {
       this.$attrs.src = `https://res.cloudinary.com/nanu/image/upload/${
         this.randomIndex
-      }.jpg`;
+      }.jpg?v=2`;
     }
   }
 };
