@@ -13,7 +13,10 @@
         style="margin-left: -8px !important"
         @click="toggleDrawer = !toggleDrawer"
       />
-      <v-toolbar-title class="letter-spacing headline ma-0">
+      <v-toolbar-title
+        :class="{ headline: bp.mdAndUp }"
+        class="letter-spacing font-weight-regular ma-0"
+      >
         <router-link
           to="/"
           class="decoration-none d-flex justify-center align-center black--text"
@@ -51,7 +54,7 @@
         v-if="bp.smAndDown"
         @click="toggleSearch = !toggleSearch"
         class="grey--text text--darken-3 mt-1"
-        :class="`fas fa-${toggleSearch ? 'times-circle' : 'search'}`"
+        :class="`fas fa-${toggleSearch ? 'times' : 'search'}`"
         style="font-size: 1.2rem"
       />
     </v-toolbar>

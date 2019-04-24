@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer app clipped :value="drawer">
+  <v-navigation-drawer app clipped width="250" :value="drawer" floating>
     <v-container>
       <v-list subheader>
         <v-list-tile

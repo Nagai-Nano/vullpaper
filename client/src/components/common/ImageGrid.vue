@@ -16,11 +16,11 @@
             <a
               @click.prevent="heart(image)"
               class="d-inline-block pr-1 mb-1 white--text hover-color"
-              :class="{ 'mr-2': bp.mdAndUp }"
+              :class="{ 'mr-2': bp.mdAndUp, 'mr-1': bp.smAndDown }"
             >
               <i
                 class="fas fa-heart"
-                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1.2rem' }"
+                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1.3rem' }"
               />
             </a>
             <a
@@ -29,7 +29,7 @@
             >
               <i
                 class="fas fa-download"
-                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1.2rem' }"
+                :style="{ 'font-size': bp.mdAndUp ? '1.5rem' : '1.3rem' }"
               />
             </a>
           </div>
