@@ -16,6 +16,14 @@ const requestTimeout = (url, timeout = 10000) => {
     return request(url)
       .then(response => {
         clearTimeout(timeoutId);
+
+        if (response.status >= 400) {
+          return router.replace({
+            name: 'error',
+            params: { code: response.status }
+          });
+        }
+
         resolve(response);
       })
       .catch(error => {

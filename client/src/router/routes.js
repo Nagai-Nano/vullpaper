@@ -36,5 +36,9 @@ export default [
     name: 'error',
     props: true,
     component: () => import('@/views/Error')
+  },
+  {
+    path: '*',
+    redirect: { name: 'error', params: { code: 404 } }
   }
 ];

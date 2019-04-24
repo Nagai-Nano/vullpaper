@@ -37,7 +37,7 @@ router.get(
 
     const { body } = await rp(`${API_HOST}${endpoint}`);
 
-    if (!body.length) return res.json({ images: [], hasMore: false });
+    if (!body.length) return next({ status: 404, message: 'Not Found' });
 
     const images = filterDataFields(body);
     res.json({ images, hasMore: true });
