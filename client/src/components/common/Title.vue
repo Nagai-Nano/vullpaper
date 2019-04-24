@@ -37,7 +37,10 @@ export default {
 
     return h(
       'div',
-      { class: `flex xs12 ${data.staticClass || ''} ${dynamicClasses}` },
+      {
+        class: `flex xs12 ${data.staticClass || ''} ${dynamicClasses}`,
+        style: data.staticStyle
+      },
       [
         h(
           'h1',

@@ -26,9 +26,9 @@
         block
         :to="`/images/?q=${encodeURIComponent(tag.name)}`"
         active-class=""
-        class="ma-0 pa-0"
+        class="ma-0 pa-0 "
       >
-        <p class="ma-0 fill-width text-xs-left pl-2">
+        <p class="ma-0 fill-width text-xs-left pl-2 text-truncate">
           {{ tag.name }}
         </p>
       </v-btn>
@@ -53,6 +53,7 @@ export default {
   methods: {
     clearInput() {
       this.input = [];
+      this.loading = false;
     },
     clearTags(e) {
       if (
@@ -76,8 +77,9 @@ export default {
   },
   watch: {
     input(newVal) {
-      if (!newVal) {
+      if (!newVal.length || !newVal.trim()) {
         this.tags = [];
+
         return;
       }
 

@@ -28,7 +28,10 @@ const requestTimeout = (url, timeout = 10000) => {
       })
       .catch(error => {
         clearTimeout(timeoutId);
-        reject(error);
+        return router.replace({
+          name: 'error',
+          params: { code: 500 }
+        });
       });
   });
 };

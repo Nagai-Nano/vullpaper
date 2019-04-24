@@ -2,10 +2,12 @@
   <header>
     <v-toolbar
       app
+      flat
       clipped-left
       scroll-off-screen
       :scroll-threshold="50"
       :extended="bp.smAndDown && toggleSearch"
+      style="border-bottom: 1px solid #bdbdbd"
     >
       <v-toolbar-side-icon
         v-if="bp.smAndDown"

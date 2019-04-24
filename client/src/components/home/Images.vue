@@ -37,7 +37,9 @@
             :to="`/images/?q=${sort[activeIndex].value}`"
             flat
             block
-            class="bg-primary white--text letter-spacing"
+            outline
+            color="#41b883"
+            class="letter-spacing"
           >
             Xem thêm
           </v-btn>

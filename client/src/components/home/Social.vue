@@ -1,5 +1,8 @@
 <template>
-  <Hero :src="require('@/assets/bg-pattern.png')" height="32rem">
+  <Hero
+    :src="require('@/assets/bg-pattern.png')"
+    :height="bp.xsOnly ? '62rem' : bp.smOnly ? '22rem' : '25rem'"
+  >
     <v-layout
       row
       wrap
@@ -12,39 +15,27 @@
         line-space="mx-auto"
         :font="bp.smAndDown ? 'display-1' : 'display-2'"
       />
-      <span class="white--text">{{ bp }}</span>
-      <div class="container d-flex pt-2 justify-space-around layout wrap">
-        <div
-          v-for="(s, i) in socials"
-          :key="s.link"
-          class="rounded white cursor-pointer hover-color"
+      <div class="container d-flex pt-2 pb-0 justify-space-around layout wrap">
+        <a
+          v-for="(social, index) in socials"
+          :key="social.link"
+          class="white py-5 rounded grey--text text--darken-4 hover-color"
+          :href="social.link"
+          target="_blank"
           :class="{
-            'mr-3': bp.mdAndUp && i < 3,
-            'pa-5': bp.lgOnly,
-            'pa-4': bp.mdOnly,
-            'pa-2': bp.smAndDown,
-            'mt-2': bp.smAndDown && i > 1,
-            'mr-2': bp.smAndDown && i % 2 === 0
+            'fill-width mb-3': bp.xsOnly,
+            'mr-3': bp.smAndUp && index < 3,
+            'mt-1 mb-3': bp.smAndUp
           }"
         >
           <i
-            :style="{ 'font-size': bp.mdAndUp ? '5rem' : '4rem' }"
-            style="transition: all .3s"
-            :class="s.icon"
+            :class="social.icon"
+            style="transition: .3s all"
+            :style="{
+              'font-size': bp.xsOnly ? '5rem' : bp.smOnly ? '4.5rem' : '5.5rem'
+            }"
           />
-          <v-btn
-            tag="a"
-            :href="s.link"
-            large
-            block
-            target="_blank"
-            class="bg-primary letter-spacing mt-3"
-            color="white"
-            flat
-          >
-            truy cập
-          </v-btn>
-        </div>
+        </a>
       </div>
       <p
         :class="{ headline: bp.mdAndUp, subheading: bp.smAndDown }"
@@ -59,6 +50,7 @@
 <script>
 import Hero from '../common/Hero';
 import Title from '../common/Title';
+import socials from '@/lib/socials';
 import breakpointMixin from '@/lib/breakpointMixin';
 
 export default {
@@ -69,24 +61,7 @@ export default {
   },
   data() {
     return {
-      socials: [
-        {
-          icon: 'fas fa-globe',
-          link: 'https://otakusan.net'
-        },
-        {
-          icon: 'fab fa-facebook-square',
-          link: 'https://facebook.com/OtakuSanc/'
-        },
-        {
-          icon: 'fab fa-facebook-messenger',
-          link: 'https://m.me/OtakuSanc'
-        },
-        {
-          icon: 'fab fa-discord',
-          link: 'https://discord.gg/7hNdJHM'
-        }
-      ]
+      socials
     };
   }
 };

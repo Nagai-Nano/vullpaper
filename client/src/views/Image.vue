@@ -1,5 +1,5 @@
 <template>
-  <v-container :pt-4="bp.smAndDown" :pt-5="bp.mdAndUp">
+  <v-container pt-4>
     <v-layout row wrap>
       <Spinner
         v-if="loading"

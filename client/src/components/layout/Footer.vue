@@ -59,29 +59,13 @@
 
 <script>
 import breakpointMixin from '@/lib/breakpointMixin';
+import socials from '@/lib/socials';
 
 export default {
   mixins: [breakpointMixin],
   data() {
     return {
-      socials: [
-        {
-          link: 'https://otakusan.net',
-          icon: 'fab fa-chrome'
-        },
-        {
-          link: 'https://www.facebook.com/OtakuSanc/',
-          icon: 'fab fa-facebook-square'
-        },
-        {
-          link: 'https://m.me/OtakuSanc',
-          icon: 'fab fa-facebook-messenger'
-        },
-        {
-          link: 'https://discord.gg/7hNdJHM',
-          icon: 'fab fa-discord'
-        }
-      ]
+      socials
     };
   }
 };
