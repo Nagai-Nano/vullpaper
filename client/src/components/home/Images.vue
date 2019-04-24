@@ -5,7 +5,6 @@
         <Title
           :font="bp.smAndDown ? 'display-1' : 'display-2'"
           class="text-xs-center pt-2"
-          :class="{ 'mt-4': bp.mdAndUp }"
           line-space="mx-auto"
           :title="sort[activeIndex].title"
         />
