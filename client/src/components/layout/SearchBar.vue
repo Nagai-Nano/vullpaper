@@ -67,18 +67,21 @@ export default {
       this.tags = [];
     },
     handleSearch: debounced(async self => {
+      if (!self.input) return (self.loading = false);
+
       const { tags } = await request(
         `/tags/search?q=${encodeURIComponent(self.input.trim())}`
       );
 
-      self.tags = tags;
+      self.tags = tags.slice(0, 10);
       self.loading = false;
     }, 500)
   },
   watch: {
     input(newVal) {
-      if (!newVal.length || !newVal.trim()) {
+      if (!newVal || !newVal.length || !newVal.trim()) {
         this.tags = [];
+        this.loading = false;
 
         return;
       }
